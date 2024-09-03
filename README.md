@@ -4,8 +4,11 @@
 ``` bash
 orin@orin-desktop:~$ python3 --version
 ```
-# 결과
-# Python 3.10.12
+```
+ 결과
+ Python 3.10.12
+```
+
 ``` bash
 
 orin@orin-desktop:~$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
