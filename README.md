@@ -17,7 +17,7 @@ orin@orin-desktop:~$ /home/orin/miniconda3/bin/conda init
 orin@orin-desktop:~$ source ~/.bashrc
 (base) orin@orin-desktop:~$ conda --version
 ```
-# conda 24.7.1
+#### conda 24.7.1
 ``` bash
 (base) orin@orin-desktop:~$ conda create -n whisper_env python=3.10
 (base) orin@orin-desktop:~$ conda activate whisper_env
@@ -79,4 +79,110 @@ conda install -c conda-forge ffmpeg
 
 모든 입력을 마치고 나면 `pyproject.toml` 파일이 생성되고, 이 파일을 통해 프로젝트의 종속성 관리와 환경 설정을 할 수 있게 됩니다.
 ```
+![Screenshot from 2024-09-03 11-22-49](https://github.com/user-attachments/assets/886a0dbe-cc52-4486-ba8e-830236df30c1)
+
+``` bash
+Do you confirm generation? (yes/no) [yes]
+
+(whisper_project) orin@orin-desktop:~/whisper_project$ 
+```
+
+###   2. Installing Whisper
+
+#### poetry add openai-whisper
+
+![Screenshot from 2024-09-03 11-24-49](https://github.com/user-attachments/assets/0454f6fc-2eae-4539-8328-9c115f3a0635)
+```
+이렇게 하면 pyproject.toml 파일이 생성되고, 프로젝트의 기본 설정이 완료됩니다. 이후에는 이 파일을 바탕으로 프로젝트의 종속성 관리 및 기타 설정을 할 수 있습니다.
+```
+
+### 3.Whisper 사용하기
+```
+이제 Whisper가 설치되었으므로, main.py 파일을 생성하고 Whisper를 Python 패키지로 가져온 후 사용하고자 하는 모델을 로드할 수 있습니다. Whisper에는 속도와 정확도 간의 균형을 제공하는 다섯 가지 모델 크기가 있습니다.
+
+`get_transcribe` 함수로 오디오 파일의 전사를 얻을 수 있습니다.
+이 함수는 두 가지 인수를 받습니다: 오디오 경로와 언어입니다.
+`audio`는 환경 내 오디오 파일의 경로를 의미하며, `language`는 오디오 파일의 언어를 지정합니다.
+Whisper가 오디오의 언어를 자동으로 인식할 수는 있지만, 시작부터 언어를 정의해주면 더 정확하게 동작할 수 있습니다.
+이 예시에서는 다음 오디오 파일을 사용하여 전사를 얻겠습니다.
+
+```
+
+### `arecord` 명령어를 사용하여 오디오 녹음을 하고, Whisper 음성을 인식하는 작업
+
+#### 1. **`arecord` 명령어 사용하기**
+
+#### 먼저, `arecord` 명령어를 사용하여 오디오를 녹음한다.
+
+``` bash
+arecord -D hw:0,0 -f cd -t wav -d 10 1.wav
+```
+
+#### 이 명령어는 `hw:0,0`에 연결된 사운드 카드에서 10초 동안 CD 품질의 WAV 파일을 녹음하여 `1.wav`라는 파일로 저장합니다.
+#### 이 녹음된 파일은 Whisper 음성 인식 엔진에서 사용될 수 있습니다.
+
+### 2. **Whisper 사용하기**
+```
+- **Whisper**: Whisper는 OpenAI에서 만든 음성 인식 모델입니다.
+ Whisper를 사용하여 한국어 음성 파일을 텍스트로 변환할 수 있습니다.
+Whisper의 경우, 다양한 모델 크기(속도와 정확도에 따라 다름)를 선택할 수 있습니다.
+```
+
+### 4. **Whisper에서 음성 인식하기 (예시 코드)**
+
+#### Python으로 Whisper를 사용하여 녹음한 파일을 인식하는 예시는 다음과 같습니다:
+#### python  test_wav.py로 저장함
+
+``` bash
+import whisper
+
+model = whisper.load_model("base")  # 사용하려는 모델 크기를 선택
+result = model.transcribe("1.wav", language="ko")  # 한국어 음성 파일을 인식
+print(result["text"])  # 인식된 텍스트 출력
+```
+
+``` bash
+(whisper_project) orin@orin-desktop:~/whisper_project$ python3 test_wav1.py
+```
+```
+실행 결과 에러남.
+
+"/home/orin/.local/lib/python3.10/site-packages/numba/__init__.py", line 45, in _ensure_critical_deps
+    raise ImportError(msg)
+ImportError: Numba needs NumPy 2.0 or less. Got NumPy 2.1.
+오류 메시지를 보면, Whisper 패키지가 사용하는 `numba` 라이브러리가 현재 설치된 `NumPy` 버전과 호환되지 않는다는 것을 알 수 있습니다. `Numba`는 `NumPy` 2.0 이하의 버전을 필요로 하지만, 현재 설치된 `NumPy` 버전은 2.1입니다.
+
+### 해결 방법
+
+1. **`NumPy` 버전 다운그레이드**
+
+`NumPy`를 호환 가능한 버전으로 다운그레이드하여 문제를 해결할 수 있습니다. Whisper와 `numba`가 제대로 작동할 수 있도록 `NumPy` 버전을 2.0 이하로 변경해 보겠습니다:
+
+```bash
+pip install numpy==1.24.3
+```
+
+이 명령어는 `NumPy`의 버전을 1.24.3으로 다운그레이드합니다. 이 버전은 `numba`와 호환됩니다.
+
+2. **`NumPy` 다운그레이드 후 Whisper 코드 다시 실행**
+
+`NumPy` 버전을 다운그레이드한 후, 이전에 작성한 Python 스크립트를 다시 실행해 보세요:
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
