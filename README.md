@@ -41,9 +41,9 @@ conda install -c conda-forge ffmpeg
 ``` bash
 (whisper_project) orin@orin-desktop:~/whisper_project$ poetry init
 ```
-####This command will guide you through creating your pyproject.toml config.        
+#### This command will guide you through creating your pyproject.toml config.        
                                                                                 
-####Package name [whisper_project]: ?                                                
+#### Package name [whisper_project]: ?                                                
                                            
 #### 깜박거리는 커저는 답을 기다리는 것임.
 
@@ -52,7 +52,7 @@ conda install -c conda-forge ffmpeg
 
 #### 지금 보시는 메시지는 프로젝트의 이름을 입력하라는 것입니다. 커서가 깜박이는 것은 사용자가 입력할 내용을 기다리고 있다는 의미입니다.
 ```
-### 선택 사항
+선택 사항
 
 1. **기본값 수락**:
    - 기본적으로 `[whisper_project]`가 표시된 것은 현재 프로젝트 디렉토리의 이름입니다. 이 이름을 그대로 사용하려면 그냥 `ENTER`를 누르시면 됩니다.
@@ -60,7 +60,7 @@ conda install -c conda-forge ffmpeg
 2. **새로운 이름 입력**:
    - 만약 프로젝트에 다른 이름을 지정하고 싶다면, 원하는 이름을 입력한 후 `ENTER`를 누르시면 됩니다.
 
-### 다음 단계
+다음 단계
 
 이후에도 몇 가지 추가적인 질문이 나올 수 있습니다. 각 질문에 대해 다음과 같이 응답할 수 있습니다:
 
