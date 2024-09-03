@@ -162,7 +162,8 @@ ImportError: Numba needs NumPy 2.0 or less. Got NumPy 2.1.
 pip install numpy==1.24.3
 ```
 
-``` 이 명령어는 `NumPy`의 버전을 1.24.3으로 다운그레이드합니다. 이 버전은 `numba`와 호환됩니다.
+### 이 명령어는 `NumPy`의 버전을 1.24.3으로 다운그레이드합니다. 
+### 이 버전은 `numba`와 호환됩니다.
 
 2. **`NumPy` 다운그레이드 후 Whisper 코드 다시 실행**
 
@@ -195,7 +196,8 @@ ERROR: pip's dependency resolver does not currently take into account all the pa
 ctranslate2 4.3.1 requires pyyaml<7,>=5.3, which is not installed.
 onnxruntime 1.16.0 requires protobuf, which is not installed.
 whisper-live 0.5.0 requires scipy, which is not installed.
-현재 발생하는 오류는 여러 패키지 간의 종속성 충돌로 인해 발생하는 것입니다. 이를 해결하기 위해 누락된 모든 패키지를 한 번에 설치하는 방법을 사용할 수 있습니다.
+현재 발생하는 오류는 여러 패키지 간의 종속성 충돌로 인해 발생하는 것입니다.
+이를 해결하기 위해 누락된 모든 패키지를 한 번에 설치하는 방법을 사용할 수 있습니다.
 ```
 
 ``` bash
