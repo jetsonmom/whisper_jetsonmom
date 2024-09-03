@@ -215,10 +215,8 @@ Successfully installed protobuf-5.28.0 scipy-1.14.1
 ```
 ![Screenshot from 2024-09-03 11-58-38](https://github.com/user-attachments/assets/1e24d79b-2c1b-40ba-b184-e6134950f58d)
 ```
-음성이 텍스트로 변환이 됩니다.
-```
-일단 과정은 설치가 힘들지만 어렵지는 않군요.
-```
+#### 음성이 텍스트로 변환이 됩니다.
+#### 일단 과정은 설치가 힘들지만 어렵지는 않군요.
 
 
 
