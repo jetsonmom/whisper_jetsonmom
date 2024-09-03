@@ -157,17 +157,67 @@ ImportError: Numba needs NumPy 2.0 or less. Got NumPy 2.1.
 1. **`NumPy` 버전 다운그레이드**
 
 `NumPy`를 호환 가능한 버전으로 다운그레이드하여 문제를 해결할 수 있습니다. Whisper와 `numba`가 제대로 작동할 수 있도록 `NumPy` 버전을 2.0 이하로 변경해 보겠습니다:
-
-```bash
+```
+``` bash
 pip install numpy==1.24.3
 ```
 
-이 명령어는 `NumPy`의 버전을 1.24.3으로 다운그레이드합니다. 이 버전은 `numba`와 호환됩니다.
+``` 이 명령어는 `NumPy`의 버전을 1.24.3으로 다운그레이드합니다. 이 버전은 `numba`와 호환됩니다.
 
 2. **`NumPy` 다운그레이드 후 Whisper 코드 다시 실행**
 
 `NumPy` 버전을 다운그레이드한 후, 이전에 작성한 Python 스크립트를 다시 실행해 보세요:
 
+- `NumPy`의 버전을 호환되는 버전으로 다운그레이드해야 합니다.
+- 다운그레이드가 완료되면, Whisper를 사용하는 스크립트를 다시 실행하여 문제가 해결되었는지 확인합니다.
+
+이 과정을 통해 Whisper와 `numba` 라이브러리의 호환성 문제를 해결할 수 있을 것입니다.
+NumPy 버전을 2.0 이하로 변경해 보겠습니다:
+
+```
+``` bash
+python3 test_wav.py
+```
+
+```
+아 또 에러가 
+(whisper_project) orin@orin-desktop:~/whisper_project$ pip install numpy==1.24.3 
+Collecting numpy==1.24.3
+  Downloading numpy-1.24.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (5.6 kB)
+Downloading numpy-1.24.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (14.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 5.9 MB/s eta 0:00:00
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.1.0
+    Uninstalling numpy-2.1.0:
+      Successfully uninstalled numpy-2.1.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+ctranslate2 4.3.1 requires pyyaml<7,>=5.3, which is not installed.
+onnxruntime 1.16.0 requires protobuf, which is not installed.
+whisper-live 0.5.0 requires scipy, which is not installed.
+현재 발생하는 오류는 여러 패키지 간의 종속성 충돌로 인해 발생하는 것입니다. 이를 해결하기 위해 누락된 모든 패키지를 한 번에 설치하는 방법을 사용할 수 있습니다.
+```
+
+``` bash
+(whisper_project) orin@orin-desktop:~/whisper_project$ pip install scipy pyyaml protobuf
+```
+```
+결과가 다음과 같읍니다.
+protobuf-5.28.0-cp38-abi3-manylinux2014_aarch64.whl (316 kB)
+Installing collected packages: scipy, protobuf
+Successfully installed protobuf-5.28.0 scipy-1.14.1
+```
+```
+실행 결과
+
+내가 원하는 프로젝트 1
+음성 파일을 텍스트로 바꿈.
+```
+![Screenshot from 2024-09-03 11-58-38](https://github.com/user-attachments/assets/1e24d79b-2c1b-40ba-b184-e6134950f58d)
+```
+음성이 텍스트로 변환이 됩니다.
+```
+일단 과정은 설치가 힘들지만 어렵지는 않군요.
 ```
 
 
