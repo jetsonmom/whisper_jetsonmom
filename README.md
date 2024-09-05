@@ -1,5 +1,9 @@
 ### whisper_jetsonmom
 ##### 오린에서 해보기.
+
+9월 5일. swap 실패로 다시 이미지 구워서 해봄
+그러나 chat_total.3.py는 잘 움직이는데 두가지를 섞은 en_sound.py는 움직이질 않는다.
+
 ### 1. Creating your environment
 ``` bash
 orin@orin-desktop:~$ python3 --version
