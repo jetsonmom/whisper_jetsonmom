@@ -1,8 +1,21 @@
 ### whisper_jetsonmom
 ##### 오린에서 해보기.
-
+```
 9월 5일. swap 실패로 다시 이미지 구워서 해봄
 그러나 chat_total.3.py는 잘 움직이는데 두가지를 섞은 en_sound.py는 움직이질 않는다.
+결과는 다음과 같다.
+  warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+Recognized commands: ['forward', 'do', 'backward', 'do', 'left', 'to', 'right', 'stop']
+forward run
+Executing command: forward
+backward run
+Executing command: backward
+Executing command: left
+Executing command: right
+Executing command: stop
+Exiting... 
+Cleaning up pins
+```
 
 ### 1. Creating your environment
 ``` bash
