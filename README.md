@@ -293,7 +293,27 @@ output 폴더를 만들고 transcribe.srt 등의 파일을 저장
 
 
 
-
+##en_sound.py코드는 영어로 wav파일 만들고 자동차 주행해보지만 
+```
+다음과 같은 결과만 나온다 
+Recognized commands: ['forward', 'do', 'backward', 'do', 'left', 'to', 'right', 'stop']
+forward run
+Executing command: forward
+backward run
+Executing command: backward
+Executing command: left
+Executing command: right
+Executing command: stop
+Exiting... 
+Cleaning up pins
+(whisper_project) orin@orin-desktop:~/whisper_project$ python3 chat_total3.py
+servo 조향 90
+servo 조향 45
+servo 조향 90
+servo 조향 135
+servo 조향 90
+Motor is running
+```
 
 
 
